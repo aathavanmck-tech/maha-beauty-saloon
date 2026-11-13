@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --burgundy-950: #2C060F;
+    --burgundy-900: #390E15;
+    --burgundy-800: #4F101E;
+    --burgundy-700: #5F1123;
+    --burgundy-600: #72162B;
+    --ivory-50: #FFFEFC;
+    --ivory-100: #FAF7F2;
+    --ivory-200: #F2ECE1;
+    --neutral-border: #E4DCD0;
+    --champagne-500: #C9A26B;
+    --champagne-400: #D4AF7A;
+    --champagne-300: #E3C89E;
+    --ink-900: #1D1716;
+    --ink-600: #5C524E;
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--ivory-100);
+    color: var(--ink-900);
+    overflow-x: clip;
+    min-width: 320px;
+  }
+
+  h1, h2, h3, h4, .font-serif-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+.font-serif-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Safe area helpers for iPhone / Android gesture bars */
+.safe-bottom-fab {
+  bottom: calc(1.125rem + env(safe-area-inset-bottom, 0px));
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+}
+
+.pb-safe-drawer {
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Subtle luxury sheen on primary burgundy buttons */
+.btn-royal-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-royal-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(250, 247, 242, 0.16) 50%,
+    transparent 80%
+  );
+  transition: left 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.btn-royal-sheen:hover::after {
+  left: 140%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-royal-sheen::after {
+    display: none;
+  }
+}
+
+/* Accessible focus outlines */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #C9A26B;
+  outline-offset: 2px;
+}
+
+/* Hide scrollbars on horizontal filter pills while keeping scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
